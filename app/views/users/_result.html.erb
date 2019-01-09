@@ -1,0 +1,11 @@
+<div class="result-flash-block col-md-12">
+	<%= bootstrap_flash %>
+</div>
+<% if @stock %>
+	<div class="well col-md-12">
+		<h3><strong>Company Name : </strong><%=@stock.name%><small>(<%=@stock.ticker%>)</small><br />
+		<strong>Last price : </strong><%=StockQuote::Stock.quote(@passpera.to_s).latest_price%><br />
+		<strong>Highest : </strong><%=StockQuote::Stock.quote(@passpera.to_s).high%><br />
+		<strong>Lowest : </strong><%=StockQuote::Stock.quote(@passpera.to_s).low%><br />
+	</div>
+<% end %>

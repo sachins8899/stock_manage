@@ -1,0 +1,19 @@
+<h1> My PortFolio</h1>
+<h2>search for stock</h2>
+<div id="stock-lookup">
+	<%= form_tag search_stock_path ,remote: true, method: :get ,id: "stock-lookup-form" do%>
+	<div class="form-group row no-padding text-center col-md-12">
+		<div class="col-md-9">
+			<%= text_field_tag :stock, params[:stock], placeholder:"Stock ticker symbol", autofocus: true, class: "form-control search-box input-lg"%>
+		</div>
+		<div class="col-md-2">
+			<%= button_tag(type: :submit, class:"btn btn-lg btn-success cleantext") do%>
+			<i class="fa fa-search"></i> Lookup stock
+			<% end %>
+		</div>
+	</div>
+	<% end %>
+</div>
+<div id="results">
+	<%= render 'users/result'%>	
+</div>
