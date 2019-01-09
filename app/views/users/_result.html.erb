@@ -1,11 +1,14 @@
-<div class="result-flash-block col-md-12">
-	<%= bootstrap_flash %>
-</div>
+<% if params[:action] == 'search'%>
+	<div class="result-flash-block col-md-12">
+		<%= bootstrap_flash %>
+	</div>
+<% end %>
 <% if @stock %>
 	<div class="well col-md-12">
 		<h3><strong>Company Name : </strong><%=@stock.name%><small>(<%=@stock.ticker%>)</small><br />
-		<strong>Last price : </strong><%=StockQuote::Stock.quote(@passpera.to_s).latest_price%><br />
-		<strong>Highest : </strong><%=StockQuote::Stock.quote(@passpera.to_s).high%><br />
-		<strong>Lowest : </strong><%=StockQuote::Stock.quote(@passpera.to_s).low%><br />
+		<strong>Last price : </strong><%=@stock.last_price%><br />
+		<strong>Highest : </strong><%=@stock.highest%><br />
+		<strong>Lowest : </strong><%=@stock.lowest%><br />
+		<%= link_to "Add To My Stock" ,user_stocks_path(user: current_user, stock_ticker: @stock.ticker), class:"btn btn-xs btn-success", method: :post%>
 	</div>
 <% end %>

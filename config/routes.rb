@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'my_portfolio', to: 'users#my_portfolio'
   get 'search_stock', to: 'stocks#search' 
+  post 'user_stocks',to: 'user_stocks#create'
 end
