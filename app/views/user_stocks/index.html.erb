@@ -1,0 +1,18 @@
+<h1>Manage Stocks</h1>
+<div class="col-lg-12">
+	<div class="well col-lg-12">
+		<table class="table">
+			<thead>
+				<th>Company Name</th>
+				<th>Stock Ticker</th>
+				<th>Actions</th>
+			</thead>
+			<tbody>
+				<% @stocks.each do |us|%>
+					<tr><td><%=us.name%></td><td><%=us.ticker%></td><td><%=link_to "Delete this stock",user_stock_path(us),
+					class: "btn btn-xs btn-danger", method: :delete, data: {confirm: "Are you sure ?"} %></td></tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

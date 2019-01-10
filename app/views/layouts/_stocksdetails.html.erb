@@ -1,0 +1,15 @@
+<div class="col-lg-12">
+	<div class="well col-lg-12">
+		<h4>Stocks tracked by you</h4>
+		<br />
+		<ul>
+			<% current_user.stocks.each do |us|%>
+			<li>
+				<%=link_to search_stock_path(stock: us.ticker), remote: true  do %>
+				<b><%= us.name.upcase %><small>(<%= us.ticker%>)</small></b>
+				<% end %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

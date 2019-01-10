@@ -1,5 +1,4 @@
-<h1> My PortFolio</h1>
-<h2>search for stock</h2>
+<h2>Search for stock</h2>
 <div id="stock-lookup">
 	<%= form_tag search_stock_path ,remote: true, method: :get ,id: "stock-lookup-form" do%>
 	<div class="form-group row no-padding text-center col-md-12">
@@ -17,3 +16,7 @@
 <div id="results">
 	<%= render 'users/result'%>	
 </div>
+
+<% if logged_in?  %>
+	<%= render 'layouts/stocksdetails'%>
+<% end %>
