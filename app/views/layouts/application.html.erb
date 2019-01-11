@@ -40,23 +40,50 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to root_path do %><b class="navbar-brand">StockManagement</b><% end %>
+        <%= link_to root_path do %><b class="navbar-brand">Stock&nbsp;&nbsp;Management</b><% end %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <% if logged_in?%>
-            	<li><%= link_to "Portfolio", my_portfolio_path%></li>
-            	<li><%= link_to "Manage Stock", user_stocks_path%></li>
-            	<li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
-            <% end %>
-          </ul>
+        <% if logged_in?%>
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="#">Another action</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right col-md-4">
+				<li>
+					<h4><i class="fa fa-user"></i> <%= current_user.fullName%></h4>
+				</li>
+				<li class="dropdown" style="padding-left: 20px;">
+					<h4><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+					<ul class="dropdown-menu" style="background-color: #cccccc;">
+						<li>
+							<a href="#">Action</a>
+						</li>
+						<li>
+							<%= link_to "Manage Stock", user_stocks_path%>
+						</li>
+						<li>
+							<%= link_to "Portfolio", my_portfolio_path%>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<a href="#">Settings</a>
+						</li>
+						<li role="separator" class="divider"></li>
+						<li>
+							<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+						</li>
+					</ul></h4>
+				</li>
+				<!-- <li class="col-md-4"></li> -->
+			</ul>
+		<% end %>
         </div>
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>

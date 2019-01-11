@@ -7,6 +7,14 @@ class User < ApplicationRecord
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
   
+  has_many :friendships
+  has_many :friend, through: :friendships
+  
+  def fullName
+    return "#{f_name}" +" "+ "#{l_name}".strip if (f_name || l_name)
+    "Anonymous" 
+  end
+  
   def stock_already_added?(ticker_symbol)
     stock = Stock.find_by_ticker(ticker_symbol)
     puts "stock"

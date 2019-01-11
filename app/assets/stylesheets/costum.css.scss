@@ -1,7 +1,16 @@
+$navbar-default-bg: #cccccc;
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 /*
  *= require devise_bootstrap_views
  */
 
 ul{list-style-type: number;text-decoration: none;}
+a:hover{
+    text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: gray;
+}
