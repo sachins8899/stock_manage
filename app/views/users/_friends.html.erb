@@ -1,0 +1,46 @@
+<%if obj.size > 0 %>
+	<div class="row-lg-12">
+		<% obj.each do |frnd|%>
+			<div class="col col-lg-12">
+				<div class="col-lg-4"><%=frnd.fullName%></div>
+				<div class="col-lg-4"><%=frnd.email%></div>
+				<div class="col-lg-4 float-left"><%=link_to "Unfriend","#", class: "btn btn-sl btn-danger"%></div>
+			</div>
+		<% end %>
+	</div>
+<% else %>
+	<div class="col-lg-12" style="color: red">
+			<p>You don't have any friend yet. Please add some.</p>
+	</div>
+<% end %>
+<h1>Friend Suggestion</h1>
+<%= render 'friends/search_friends'%>
+<div class="row col-sm-12">
+	<% User.all.each do |frnd|%>
+		<%if frnd != current_user%>
+			<div class="well col-sm-12" style="margin:  10px;">
+				<nav class="navbar navbar-light">
+					<ul class="nav navbar-nav">
+						<li>
+							<h2><i class="fa fa-user"></i> <a href="#"><%=frnd.fullName%></a></h2>
+						</li>
+					</ul>
+					<%=link_to "#" do |btn|%>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<% if obj.size > 0 && obj.include?(frnd) %>
+									<button type="button" class="btn btn-lg btn-default disabled">Aleard Friends</button>
+								<% else %>
+									<button type="button" class="btn btn-lg btn-success"><i class="fa fa-user-plus"></i> &nbsp;Add As Friend</button>
+								<% end %>
+							</li>
+						</ul>
+					<% end %>
+				</nav>
+			</div>
+			<!-- <div class="well col-lg-12 ">
+				<%=frnd.fullName%> <%=frnd.email%> <%=link_to "Add","#", class: "btn btn-xs btn-success"%>
+			</div> -->
+		<% end %>
+	<% end %>
+	</div>

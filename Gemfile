@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
 # gem for stock market details
 gem 'stock_quote'
 gem 'font-awesome-rails'
+# gem for chart 
+gem 'chartkick'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

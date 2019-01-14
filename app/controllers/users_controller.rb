@@ -6,4 +6,8 @@ class UsersController < ApplicationController
   def my_friends
     
   end
+  
+  def search
+    
+  end
 end

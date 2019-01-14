@@ -50,7 +50,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right col-md-4">
 				<li>
-					<h4><i class="fa fa-user"></i> <%= current_user.fullName%></h4>
+					<h4><i class="fa fa-user blue"></i> <%= current_user.fullName%></h4>
 				</li>
 				<li class="dropdown" style="padding-left: 20px;">
 					<h4><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
@@ -66,7 +66,7 @@
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
-							<a href="#">Settings</a>
+							<%= link_to "Settings", settings_path%>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
@@ -87,8 +87,11 @@
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
+        <div class="col-md-4">
+        	<div id="content"><%= content_for?(:content) ? yield(:content) : "" %></div>
+		</div>
       </div><!--/row-->
-
+	
       <footer>
         <p>&copy; Company 2019</p>
       </footer>
