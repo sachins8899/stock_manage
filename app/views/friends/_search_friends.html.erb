@@ -1,14 +1,14 @@
 <div id="stock-lookup">
 	<%= form_tag search_friend_path ,remote: true, method: :get ,id: "friend-lookup-form" do%>
-	<div class="form-group row no-padding text-center col-md-12">
-		<div class="col-md-10">
-			<%= text_field_tag :friend, params[:friend], placeholder:"Enter name or email", autofocus: true, class: "form-control search-box input-lg"%>
+		<div class="form-group row no-padding text-center col-md-12">
+			<div class="col-md-6">
+				<%= text_field_tag :friend, params[:friend], placeholder:"Enter name or email", autofocus: true, class: "form-control search-box input-xs"%>
+			</div>
+			<div class="col-md-1">
+				<%= button_tag(type: :submit, class:"btn btn-sl btn-success cleantext") do%>
+				<i class="fa fa-search"></i>
+				<% end %>
+			</div>
 		</div>
-		<div class="col-md-2">
-			<%= button_tag(type: :submit, class:"btn btn-lg btn-success cleantext") do%>
-			<i class="fa fa-search"></i> Search
-			<% end %>
-		</div>
-	</div>
 	<% end %>
 </div>

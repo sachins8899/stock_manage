@@ -1,0 +1,20 @@
+<% if params[:action] == 'search'%>
+	<div class="result-flash-block col-md-12">
+		<%= bootstrap_flash %>
+	</div>
+<% end %>
+<% if @users %>
+	<% @users.each do |frnd|%>
+		<% if frnd != current_user %>
+			<div class="well col-md-3 padclass">
+				<b><i class="fa fa-user"></i> <br /><%= frnd.fullName%></b>
+				<br />
+				<%if current_user.friends.include?(frnd)%>
+					<button type="button" class="btn btn-xs btn-default disabled"><i class="fa fa-user-plus"></i> &nbsp;Aleard Friends</button>
+				<% else %>
+					<%=link_to add_friends_path(user: current_user, friend: frnd) do %><button type="button" class="btn btn-xs btn-success"><i class="fa fa-user-plus"></i> &nbsp;Add As Friend</button><% end %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+<% end %>

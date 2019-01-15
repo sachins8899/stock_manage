@@ -1,46 +1,42 @@
-<%if obj.size > 0 %>
-	<div class="row-lg-12">
-		<% obj.each do |frnd|%>
-			<div class="col col-lg-12">
-				<div class="col-lg-4"><%=frnd.fullName%></div>
-				<div class="col-lg-4"><%=frnd.email%></div>
-				<div class="col-lg-4 float-left"><%=link_to "Unfriend","#", class: "btn btn-sl btn-danger"%></div>
-			</div>
-		<% end %>
-	</div>
-<% else %>
-	<div class="col-lg-12" style="color: red">
-			<p>You don't have any friend yet. Please add some.</p>
-	</div>
+<% content_for :content do %>
+	<h3> My Friends</h3>
+	<%if obj.size > 0 %>
+		<div class="row-lg-8">
+			<ul class="list-group">
+				<% obj.each do |frnd|%>
+					  <li class="list-group-item"><%=link_to frnd.fullName , "#" %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% else %>
+		<div class="col-lg-8" style="color: red">
+				<p>You don't have any friend yet. Please add some.</p>
+		</div>
+	<% end %>
 <% end %>
-<h1>Friend Suggestion</h1>
-<%= render 'friends/search_friends'%>
+
+<h3> Search friend</h3>
+<div class="row">
+	<div class="col-sl-12">
+		<%= render 'friends/search_friends'%>
+		<div id="results">
+			<%= render 'users/result'%>	
+		</div>
+	</div>
+</div>
+<h3>Friend Suggestion</h3>
 <div class="row col-sm-12">
 	<% User.all.each do |frnd|%>
 		<%if frnd != current_user%>
-			<div class="well col-sm-12" style="margin:  10px;">
-				<nav class="navbar navbar-light">
-					<ul class="nav navbar-nav">
-						<li>
-							<h2><i class="fa fa-user"></i> <a href="#"><%=frnd.fullName%></a></h2>
-						</li>
-					</ul>
-					<%=link_to "#" do |btn|%>
-						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<% if obj.size > 0 && obj.include?(frnd) %>
-									<button type="button" class="btn btn-lg btn-default disabled">Aleard Friends</button>
-								<% else %>
-									<button type="button" class="btn btn-lg btn-success"><i class="fa fa-user-plus"></i> &nbsp;Add As Friend</button>
-								<% end %>
-							</li>
-						</ul>
-					<% end %>
-				</nav>
-			</div>
-			<!-- <div class="well col-lg-12 ">
-				<%=frnd.fullName%> <%=frnd.email%> <%=link_to "Add","#", class: "btn btn-xs btn-success"%>
-			</div> -->
+		<div class="well col-md-3 padclass">
+			<b><i class="fa fa-user"></i> <br /><%= frnd.fullName%></b>
+			<br />
+			<% if obj.size > 0 && obj.include?(frnd) %>
+				<button type="button" class="btn btn-xs btn-default disabled"><i class="fa fa-user-plus"></i> &nbsp;Aleard Friends</button>
+			<% else %>
+				<%=link_to add_friends_path(user: current_user, friend: frnd), method: :post do %><button type="button" class="btn btn-xs btn-success"><i class="fa fa-user-plus"></i> &nbsp;Add As Friend</button><% end %>
+			<% end %>
+		</div>
 		<% end %>
 	<% end %>
 	</div>

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :user_stocks, only: [:create, :destroy, :index]
   resources :friendships
   resources :users, only:[:show]
+  post 'add_friends',to: 'users#add_friend'
   get 'my_friends', to: 'users#my_friends'
 end
