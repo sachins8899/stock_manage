@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
   
+  has_one :profile, dependent: :destroy
+  
   def fullName
     return "#{f_name}" +" "+ "#{l_name}".strip if (f_name || l_name)
     "Anonymous" 

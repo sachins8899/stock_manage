@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_11_121104) do
+ActiveRecord::Schema.define(version: 2019_01_16_121400) do
+
+  create_table "educations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.string "standard"
+    t.string "start"
+    t.string "end"
+    t.string "from_where"
+    t.string "school_college"
+    t.string "university"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_educations_on_profile_id"
+  end
 
   create_table "friendships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id"
@@ -19,6 +32,18 @@ ActiveRecord::Schema.define(version: 2019_01_11_121104) do
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "fixed_address"
+    t.string "temp_address"
+    t.string "profession"
+    t.string "company"
+    t.boolean "employee_employer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -54,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_121104) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "educations", "profiles"
   add_foreign_key "user_stocks", "stocks"
   add_foreign_key "user_stocks", "users"
 end

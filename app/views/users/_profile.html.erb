@@ -1,0 +1,25 @@
+<br />
+<div class="col-md-5">
+	<h3><%= obj.fullName %></h3>
+	<div class="card" style="width: 18rem;">
+	  <%= image_tag("default.jpg") %>
+	  <div class="card-body">
+	    <h5 class="card-title"><%=link_to "Edit profile image","#"%> | <%=link_to "Edit Profile", edit_profile_path(2) %></h5>
+	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	</div>
+</div>
+<div class="col-md-5">
+	<div class="card" style="width: 18rem;">
+	  <div class="card-body">
+	    <h3 class="card-title"><Information><br /></h3>
+	    <p class="card-text"><b>Currently In : </b>Saharanpur </p>
+	    <p class="card-text"><b>Education : </b> 
+	    	<ul>
+				<li>MCA<small>(2015)</small></li>
+				<li>BCA<small>(2012)</small></li>
+	    	</ul>
+	    </p>
+	  </div>
+	</div>
+</div>

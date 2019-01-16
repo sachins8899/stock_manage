@@ -6,26 +6,14 @@
 		<li>
 			<a href="#2a" data-toggle="tab">Friends</a>
 		</li>
-		<li>
-			<a href="#3a" data-toggle="tab">Applying clearfix</a>
-		</li>
-		<li>
-			<a href="#4a" data-toggle="tab">Background color</a>
-		</li>
 	</ul>
 
 	<div class="tab-content clearfix">
 		<div class="tab-pane active" id="1a">
-			<h3>User Profile</h3>
+			<%= render 'users/profile', obj: current_user %>
 		</div>
 		<div class="tab-pane" id="2a">
 			<%= render 'users/friends', obj: @friendship %>
-		</div>
-		<div class="tab-pane" id="3a">
-			<h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
-		</div>
-		<div class="tab-pane" id="4a">
-			<h3>We use css to change the background color of the content to be equal to the tab</h3>
 		</div>
 	</div>
 </div>

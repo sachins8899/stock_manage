@@ -1,0 +1,136 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1><%= @user.fullName%></h1>
+		<p>
+		  <a class="btn btn-default" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+		    User Profile
+		  </a>
+		</p>
+		<div class="collapse" id="collapseExample">
+		  <div class="card card-body">
+			    <%= form_for(@user, :html => {class: "form-horizontal",role: "form"}) do |f|%>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :email %>
+						</div>
+						<div class="control-label col-sm-4">
+							<%= f.email_field :email, class: "form-control", placeholder: "User Name", autofocus: true, disabled: true %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :first_name %>
+						</div>
+						<div class="col-sm-4">
+							<%= f.text_field :f_name, class: "form-control", placeholder: "First Name" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :last_name %>
+						</div>
+						<div class="col-sm-4">
+							<%= f.text_field :l_name, class: "form-control", placeholder: "Last Name" %>
+						</div>
+					</div>
+						<%= f.object.profile do |photo| %>
+						    <%= f.fields_for photo do |photo_form| %>
+							    <div class="control-label col-sm-2">
+									<%= photo_form.label :fixed_address %>
+								</div>
+								<div class="col-sm-4">
+									<%= photo_form.text_field :fixed_address, class: "form-control", placeholder: "Last Name" %>
+								</div>
+						    <% end %>
+						  <% end %>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-11">
+							<%= f.submit("Update", class: 'btn btn-primary btn-sl col-xs-4')%>
+						</div>
+					</div>
+				<% end %>
+		  	</div>
+		</div>
+		<!-- <p>
+		  <a class="btn btn-default" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+		    Educational Profile
+		  </a>
+		</p>
+		<div class="collapse" id="collapseExample2">
+		  <div class="card card-body">
+			    <%= form_for(@user, :html => {class: "form-horizontal",role: "form"}) do |f|%>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :email %>
+						</div>
+						<div class="control-label col-sm-4">
+							<%= f.email_field :email, class: "form-control", placeholder: "User Name", autofocus: true, disabled: true %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :first_name %>
+						</div>
+						<div class="col-sm-4">
+							<%= f.text_field :f_name, class: "form-control", placeholder: "First Name" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :last_name %>
+						</div>
+						<div class="col-sm-4">
+							<%= f.text_field :l_name, class: "form-control", placeholder: "Last Name" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-11">
+							<%= f.submit("Update", class: 'btn btn-primary btn-sl col-xs-4')%>
+						</div>
+					</div>
+				<% end %>
+		  	</div>
+		</div>
+		<p>
+		  <a class="btn btn-default" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+		    Official Profile
+		  </a>
+		</p>
+		<div class="collapse" id="collapseExample3">
+		  <div class="card card-body">
+			    <%= form_for(@user, :html => {class: "form-horizontal",role: "form"}) do |f|%>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :email %>
+						</div>
+						<div class="control-label col-sm-4">
+							<%= f.email_field :email, class: "form-control", placeholder: "User Name", autofocus: true, disabled: true %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :first_name %>
+						</div>
+						<div class="col-sm-4">
+							<%= f.text_field :f_name, class: "form-control", placeholder: "First Name" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label :last_name %>
+						</div>
+						<div class="col-sm-4">
+							<%= f.text_field :l_name, class: "form-control", placeholder: "Last Name" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-11">
+							<%= f.submit("Update", class: 'btn btn-primary btn-sl col-xs-4')%>
+						</div>
+					</div>
+				<% end %>
+		  	</div>
+		</div> -->
+	</div>
+</div>
+

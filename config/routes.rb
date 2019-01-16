@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :users, only:[:show]
   post 'add_friends',to: 'users#add_friend'
   get 'my_friends', to: 'users#my_friends'
+  resources :profiles, only: [:create,:update,:edit]
 end
