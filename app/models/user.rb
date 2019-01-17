@@ -12,6 +12,8 @@ class User < ApplicationRecord
   
   has_one :profile, dependent: :destroy
   
+  has_many :images
+  
   def fullName
     return "#{f_name}" +" "+ "#{l_name}".strip if (f_name || l_name)
     "Anonymous" 

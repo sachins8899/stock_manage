@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_16_121400) do
+ActiveRecord::Schema.define(version: 2019_01_17_113102) do
 
   create_table "educations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "profile_id"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2019_01_16_121400) do
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "name"
+    t.string "picture"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -80,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_01_16_121400) do
   end
 
   add_foreign_key "educations", "profiles"
+  add_foreign_key "images", "users"
   add_foreign_key "user_stocks", "stocks"
   add_foreign_key "user_stocks", "users"
 end
