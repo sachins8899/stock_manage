@@ -18,7 +18,7 @@
       <tr>
         <td><%= link_to image.id, image_path(image) %></td>
         <td><%= image.name %></td>
-        <td><%= image.picture %></td>
+        <td><%=image_tag(image.picture.url, size: "50x50") if image.picture? %></td>
         <td><%= image.user_id %></td>
         <td><%=l image.created_at %></td>
         <td>

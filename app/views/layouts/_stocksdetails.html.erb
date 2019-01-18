@@ -1,15 +1,30 @@
 <div class="col-lg-12">
-	<div class="well col-lg-12">
-		<h4>Stocks tracked by you</h4>
+	<div class="col-lg-12">
+		<h4>Stocks tracked by you </h4>
 		<br />
-		<ul>
+		<table class="table col-lg-12">
 			<% current_user.stocks.each do |us|%>
-			<li>
-				<%=link_to search_stock_path(stock: us.ticker), remote: true  do %>
-				<b><%= us.name.upcase %><small>(<%= us.ticker%>)</small></b>
-				<% end %>
-			</li>
+			<tr>
+				<td>
+					<%=link_to search_stock_path(stock: us.ticker), remote: true  do %>
+					<b><%= us.name.upcase %><small>(<%= us.ticker%>)</small></b><br />
+					<% end %>
+				</td>
+				<td>
+					<i class="fa fa-arrow-up" style="color: green;"></i> <%= us.highest%>
+				</td>
+				<td>
+					<i class="fa fa-arrow-down" style="color: red;"></i> <%= us.lowest%>
+				</td>
+			</tr>
 			<% end %>
-		</ul>
+		</table>
+		<div class="col-lg-12">
+				<div>  Highest <i class="fa fa-arrow-up" style="color: green;"></i>  &nbsp;&nbsp;&nbsp; Lowest &nbsp;<i class="fa fa-arrow-down" style="color: red;"></i></div>
+				<br />
+				<%= link_to user_stocks_path do |btn|%>
+					<button class="btn btn-success"> <i class="fa fa-wrench"></i> Manage Stock </button>
+				<% end %>
+		</div>
 	</div>
 </div>

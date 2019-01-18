@@ -2,24 +2,45 @@
 <div class="col-md-5">
 	<h3><%= obj.fullName %></h3>
 	<div class="card">
-	  <%= image_tag(current_user.images.last.picture.url, size: "300x300",:class=> "img-circular") if current_user.images.last.picture? %>
+		<%if imgae_exist? %>
+			<%= image_tag(current_user.images.last.picture.url, size: "300x300",:class=> "img-circular") if current_user.images.last.picture? %>
+		<% else %>
+			<%= image_tag("default.jpg", size: "300x300",:class=> "img-circular")%>
+		<% end %>
 	  <div class="card-body">
-	    <h5 class="card-title"><%=link_to "Edit profile image",new_image_path%> | <%=link_to "Edit Profile", edit_profile_path(2) %></h5>
-	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	    <h5 class="card-title"><%=link_to "Edit profile image",new_image_path%></h5>
+	    <%=link_to "Edit Profile", edit_profile_path(2), class: "btn btn-primary",style: "color:white;"%>
 	  </div>
 	</div>
 </div>
 <div class="col-md-5">
 	<div class="card" style="width: 18rem;">
 	  <div class="card-body">
-	    <h3 class="card-title"><Information><br /></h3>
-	    <p class="card-text"><b>Currently In : </b>Saharanpur </p>
-	    <p class="card-text"><b>Education : </b> 
-	    	<ul>
-				<li>MCA<small>(2015)</small></li>
-				<li>BCA<small>(2012)</small></li>
-	    	</ul>
-	    </p>
+	    <h3 class="card-title">Information<br /></h3>
+	    <%if imgae_exist? && profile_exist? %>
+		    <p class="card-text"><b>Currently In : </b><%=obj.profile.temp_address%></p>
+		     <p class="card-text"><b>Belongs from : </b><%=obj.profile.fixed_address%></p>
+		    <p class="card-text"><b style="text-decoration: underline;">Education</b> 
+		    	<ul style="list-style: none;">
+		    		<%obj.profile.educations.each do |edu|%>
+		    			<li><b><%=edu.standard%></b><br /><%= edu.school_college%> <%= edu.from_where%> <%= edu.university%><small>(<%=edu.start+" - "+edu.end%>)</small></li>
+		    		<% end %>
+		    	</ul>
+		    </p>
+		<% else %>
+			<p class="card-text"><b><%=link_to "Please Update your profile" , edit_profile_path(2)%></b></p>
+	    <% end %>
 	  </div>
 	</div>
 </div>
+<%= render 'layouts/stocksdetails'%>
+<!-- <div class="col-lg-12" style="border: 1px solid black;">
+	<div class="col-md-5">
+		<%= render 'layouts/stocksdetails'%>
+	</div>
+	<div class="col-md-4">
+		<div id="results">
+			<%= render 'users/result'%>	
+		</div>
+	</div>
+</div> -->

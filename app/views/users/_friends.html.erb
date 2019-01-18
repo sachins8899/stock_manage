@@ -2,11 +2,23 @@
 	<h3> My Friends</h3>
 	<%if obj.size > 0 %>
 		<div class="row-lg-8">
-			<ul class="list-group">
-				<% obj.each do |frnd|%>
-					  <li class="list-group-item"><%=link_to frnd.fullName , "#" %></li>
-				<% end %>
-			</ul>
+			<% obj.each_with_index do |frnd, index|%>
+				<div class="card">
+					<div class="card">
+						<div class="card-header" id="headingTwo">
+							<h5 class="mb-0">
+							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%=index%>" aria-expanded="false" aria-controls="collapseTwo">
+								<%=frnd.fullName %>
+							</button></h5>
+						</div>
+						<div id="collapse<%=index%>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+							<div class="card-body">
+								<%=link_to add_friends_path(user: current_user, friend: frnd) do %><button type="button" class="btn btn-xs btn-success"><i class="fa fa-user-plus"></i> &nbsp;Go to profile</button><% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	<% else %>
 		<div class="col-lg-8" style="color: red">

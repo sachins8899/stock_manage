@@ -32,17 +32,18 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right col-md-4">
 				<li>
-					<h4><i class="fa fa-user blue"></i> <%= current_user.fullName%></h4>
+					<h4> 
+						<%if imgae_exist? %>
+							<%= image_tag(current_user.images.last.picture.url, size: "30x30") if current_user.images.last.picture? %>
+						<% else %>
+							<%= image_tag("default.jpg", size: "30x30")%>
+						<% end %>
+					<%= current_user.fullName%>
+					</h4>
 				</li>
 				<li class="dropdown" style="padding-left: 20px;">
-					<h4><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account<span class="caret"></span></a>
+					<h4><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <span class="caret"></span></a>
 					<ul class="dropdown-menu" style="background-color: #cccccc;">
-						<li>
-							<a href="#">Action</a>
-						</li>
-						<li>
-							<%= link_to "Manage Stock", user_stocks_path%>
-						</li>
 						<li>
 							<%= link_to "Portfolio", my_portfolio_path%>
 						</li>

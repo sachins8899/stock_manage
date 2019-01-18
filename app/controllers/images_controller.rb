@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.json
   def index
-    @images = Image.all
+    @images = Image.where(user: current_user)
   end
 
   # GET /images/1
@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
+    puts params[:action]+" -- Action"
   end
 
   # GET /images/1/edit
