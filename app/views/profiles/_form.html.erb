@@ -1,0 +1,42 @@
+<div class="col col-lg-12">
+	<%= form_for(obj , :html => {:class => "form-horizontal", role: "form"}) do |f|%>
+	<div class="form-group">
+		<div class="control-label col-md-3">
+			<%=f.label :current_company%>
+		</div>
+		<div class="control-label col-md-5">
+			<%=f.text_field :company , class: "form-control", placeholder: "Company Name", autofocus: true %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-3">
+			<%=f.label :profession%>
+		</div>
+		<div class="control-label col-md-5">
+			<%=f.text_field :profession , class: "form-control", placeholder: "Your Profession", autofocus: true %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-3">
+			<%=f.label :current_city%>
+		</div>
+		<div class="control-label col-md-5">
+			<%=f.text_area :temp_address , class: "form-control", placeholder: "Your Profession", autofocus: true %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-3">
+			<%=f.label :home_town_city%>
+		</div>
+		<div class="control-label col-md-5">
+			<%=f.text_area :fixed_address , class: "form-control", placeholder: "Your Profession", autofocus: true %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-4">
+			<%= f.submit  class: "btn btn-primary"%>	
+			<%=link_to "Cancel", settings_path, class: "btn btn-default"%>		
+		</div>
+	</div>
+	<% end %>
+</div>

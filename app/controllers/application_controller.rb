@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     !!current_user.profile
   end
   
+  def education_exist?
+    !!current_user.profile.educations
+  end
+  
 end

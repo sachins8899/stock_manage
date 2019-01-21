@@ -1,4 +1,7 @@
 <% content_for :content do %>
+	<div id="results">
+				<%= render 'users/result'%>	
+	</div>
 	<h3> My Friends</h3>
 	<%if obj.size > 0 %>
 		<div class="row-lg-8">
@@ -31,9 +34,6 @@
 <div class="row">
 	<div class="col-sl-12">
 		<%= render 'friends/search_friends'%>
-		<div id="results">
-			<%= render 'users/result'%>	
-		</div>
 	</div>
 </div>
 <h3>Friend Suggestion</h3>

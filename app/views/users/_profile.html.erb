@@ -1,5 +1,5 @@
 <br />
-<div class="col-md-5">
+<div class="col-md-4">
 	<h3><%= obj.fullName %></h3>
 	<div class="card">
 		<%if imgae_exist? %>
@@ -9,26 +9,39 @@
 		<% end %>
 	  <div class="card-body">
 	    <h5 class="card-title"><%=link_to "Edit profile image",new_image_path%></h5>
-	    <%=link_to "Edit Profile", edit_profile_path(2), class: "btn btn-primary",style: "color:white;"%>
+	    <h5 class="card-title"><%=link_to "Edit Personal Details",edit_user_registration_path%></h5>
+	    <!-- <%=link_to "Edit Personal Details", edit_user_registration_path, class: "btn btn-primary",style: "color:white;"%> -->
 	  </div>
 	</div>
 </div>
-<div class="col-md-5">
-	<div class="card" style="width: 18rem;">
+<div class="col-md-6">
+	<div class="card">
 	  <div class="card-body">
-	    <h3 class="card-title">Information<br /></h3>
-	    <%if imgae_exist? && profile_exist? %>
-		    <p class="card-text"><b>Currently In : </b><%=obj.profile.temp_address%></p>
-		     <p class="card-text"><b>Belongs from : </b><%=obj.profile.fixed_address%></p>
-		    <p class="card-text"><b style="text-decoration: underline;">Education</b> 
-		    	<ul style="list-style: none;">
-		    		<%obj.profile.educations.each do |edu|%>
-		    			<li><b><%=edu.standard%></b><br /><%= edu.school_college%> <%= edu.from_where%> <%= edu.university%><small>(<%=edu.start+" - "+edu.end%>)</small></li>
-		    		<% end %>
-		    	</ul>
-		    </p>
+	    <%if profile_exist? %>
+		    <div>
+		    	<h3 class="card-title">Personal Details<br /></h3>
+		    	<table>
+		    		<tr><td><b>Company : </b></td><td><%=obj.profile.company%></td></tr>
+		    		<tr><td><b>Designation : </b></td><td><%=obj.profile.profession%></td></tr>
+		    		<tr><td><b>Currently In : </b></td><td><%=obj.profile.temp_address%></td></tr>
+		    		<tr><td><b>Belongs from : </b></td><td><%=obj.profile.fixed_address%></td></tr>
+		    	</table>
+		    </div>
+		    <div style="float: right;"><%=link_to "Edit", edit_profile_path(obj.profile.id)%></div>
+		    <hr />
+		    <div>
+		    	<p class="card-text"><h3>Education</h3> 
+			    	<ul style="list-style: none;">
+			    		<%obj.profile.educations.each do |edu|%>
+			    			<li><b><%=edu.standard%></b><br /><%= edu.school_college%> <%= edu.from_where%> <%= edu.university%><small>(<%=edu.start+" - "+edu.end%>)</small></li>
+			    		<% end %>
+			    	</ul>
+			    </p>
+		    </div>
+		    <div style="float: right;"><%=link_to "Edit", edit_profile_path(obj.profile.id)%></div>
+		    <hr />
 		<% else %>
-			<p class="card-text"><b><%=link_to "Please Update your profile" , edit_profile_path(2)%></b></p>
+			<p class="card-text"><b><%=link_to "Please Update your profile" , new_profile_path%></b></p>
 	    <% end %>
 	  </div>
 	</div>
