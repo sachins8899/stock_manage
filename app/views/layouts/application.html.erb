@@ -15,48 +15,79 @@
   </head>
   <body>
 
-    <div class="navbar navbar-default">
+    <div class="navbar navbar-default navbar-static">
       <div class="containt">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to root_path do %><b class="navbar-brand " style="color: black;"><i class="fa fa-bar-chart" aria-hidden="true" ></i> Stock&nbsp;&nbsp;Management</b><% end %>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <%= link_to root_path do %><b class="navbar-brand " style="color: black;"><i class="fa fa-bar-chart" aria-hidden="true" style="color: green;"></i> Stock&nbsp;&nbsp;Management</b><% end %>
+        <div class="collapse navbar-collapse js-navbar-collapse">
         <% if logged_in?%>
 			<ul class="nav navbar-nav">
 				<li>
 					<a href="#"></a>
 				</li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right col-md-2">
+			<ul class="nav navbar-nav navbar-right ">
 				<li>
-					<h4> 
+					<h4 class="comman"> 
 						<%if imgae_exist? %>
 							<%= image_tag(current_user.images.last.picture.url, size: "30x30") if current_user.images.last.picture? %>
 						<% else %>
 							<%= image_tag("default.jpg", size: "30x30")%>
 						<% end %>
-					<%= current_user.fullName%>
+					<%= current_user.fullName %>
 					</h4>
 				</li>
 				<li class="dropdown" style="padding-left: 20px;">
-					<h4><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> <span class="caret"></span></a>
-					<ul class="dropdown-menu" style="background-color: #cccccc;">
+					<h3><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user comman"></i> <span class="caret comman"></span></a>
+					<ul class="dropdown-menu scrollable-menu" style="background-color: #cccccc;">
 						<li>
-							<%= link_to "Portfolio", my_portfolio_path%>
+							<%= link_to "Stockes", my_portfolio_path%>
 						</li>
 						<li role="separator" class="divider"></li>
 						<li>
 							<%= link_to "Settings", settings_path%>
 						</li>
+						<li>
+							<%= link_to "Messages", "#" %>
+						</li>
 						<li role="separator" class="divider"></li>
 						<li>
 							<%= link_to "Logout", destroy_user_session_path, method: :delete %>
 						</li>
-					</ul></h4>
+					</ul></h3>
 				</li>
+				<%if current_user.pending_task.count > 0 %>
+					<li class="dropdown dropdown-large" >
+						  <button class="btn btn-default btn-lg btn-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						    <span class="glyphicon glyphicon-comment"></span>
+						  </button>
+						  <span class="badge badge-notify"><%=current_user.pending_task.count%></span>
+						  <ul class="dropdown-menu scrollable-menu" style="background-color: #cccccc; width: 300px;padding-left: 20px;padding-right: 20px;" >
+						  	<h4><b>Friend Requests</b></h4>
+						  	<% current_user.pending_task.each do |task|%>
+						  		<% frnd = User.find(task.friend_id) %>
+						  		<li style="color: black; margin-bottom: 40px;">
+						  			<div >
+						  				<h4><% if frnd.has_image? %>
+											<%= image_tag(frnd.images.last.picture.url, size: "40x40") %>
+										<% else %>
+											<%= image_tag("default.jpg", size: "40x40")%>
+										<% end %><%= frnd.fullName %></h4>
+										<div style="margin: 10px;">
+											<div style="float: left"><button class="btn btn-xs btn-success">Accept</button></div>
+											<div style="float: right"><button class="btn btn-xs btn-danger">Reject</button></div>
+										</div>
+						  			</div>
+								</li>
+								<li role="separator" class="divider"></li>
+						  	<% end %>
+						</ul>
+					</li>
+				<% end %>
 				<!-- <li class="col-md-4"></li> -->
 			</ul>
 		<% end %>

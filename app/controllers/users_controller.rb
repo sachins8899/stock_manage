@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   def my_portfolio
     
   end
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
       flash.now[:danger] ="No such user found !!" if @users.blank?
     end
     respond_to do |format|
-         format.js{ render partial: 'friends/result' }          
+         format.js{ render partial: 'friends/frndresult' }          
     end
   end
   

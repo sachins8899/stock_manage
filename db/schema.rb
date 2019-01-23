@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_113102) do
+ActiveRecord::Schema.define(version: 2019_01_22_095218) do
 
   create_table "educations", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "profile_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_113102) do
     t.string "university"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "subjects"
     t.index ["profile_id"], name: "index_educations_on_profile_id"
   end
 
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_113102) do
     t.bigint "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "P"
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end

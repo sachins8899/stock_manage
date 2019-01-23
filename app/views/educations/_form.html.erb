@@ -1,0 +1,54 @@
+
+	<div class="form-group">
+		<hr />
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-1">
+			<%= f.label :class%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_field :standard , require: true, placeholder: "ex. MBA, MCA"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-1">
+			<%= f.label :strat%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_field :start, require: true, placeholder: "2000"%>
+		</div>
+		<div class="control-label col-md-3">
+			<%= f.label :end%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_field :end, require: true, placeholder: "2020"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-1">
+			<%= f.label :college_name%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_field :school_college, require: true, placeholder: "College or School name"%>
+		</div>
+		<div class="control-label col-md-3">
+			<%= f.label :from%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_field :from_where, require: true, placeholder: "City"%>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="control-label col-md-1">
+			<%= f.label :university%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_field :university, require: true, placeholder: "University or Board"%>
+		</div>
+		<div class="control-label col-md-3">
+			<%= f.label :subjects%>
+		</div>
+		<div class="control-label col-md-2">
+			<%=f.text_area :subjects, require: true, placeholder: "Subjects"%>
+		</div>
+	</div>

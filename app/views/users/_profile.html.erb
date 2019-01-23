@@ -33,12 +33,14 @@
 		    	<p class="card-text"><h3>Education</h3> 
 			    	<ul style="list-style: none;">
 			    		<%obj.profile.educations.each do |edu|%>
-			    			<li><b><%=edu.standard%></b><br /><%= edu.school_college%> <%= edu.from_where%> <%= edu.university%><small>(<%=edu.start+" - "+edu.end%>)</small></li>
+			    			<li><b><%=edu.standard%></b><small>(<%=edu.start+" - "+edu.end%>)</small><br />
+			    				<%= edu.school_college%> <%= edu.from_where%> <%= edu.university%>
+			    				<small><b> Subjects - </b>(<%=edu.subjects%>) </small></li>
 			    		<% end %>
 			    	</ul>
 			    </p>
 		    </div>
-		    <div style="float: right;"><%=link_to "Edit", edit_profile_path(obj.profile.id)%></div>
+		    <div style="float: right;"><%=link_to "Edit", obj.profile.educations.size > 0 ? edit_education_path(obj.profile.id) : new_education_path %></div>
 		    <hr />
 		<% else %>
 			<p class="card-text"><b><%=link_to "Please Update your profile" , new_profile_path%></b></p>

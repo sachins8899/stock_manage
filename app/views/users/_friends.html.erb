@@ -10,16 +10,25 @@
 					<div class="card">
 						<div class="card-header" id="headingTwo">
 							<h5 class="mb-0">
-							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%=index%>" aria-expanded="false" aria-controls="collapseTwo">
-								<%=frnd.fullName %>
-							</button></h5>
+								<% if frnd.has_image? %>
+									<%= image_tag(frnd.images.last.picture.url, size: "40x40") %>
+								<% else %>
+									<%= image_tag("default.jpg", size: "40x40")%>
+								<% end %>
+								<button type="button" class="btn btn-link btn-md" data-toggle="modal" data-target="#exampleModal<%=index%>" data-whatever="@mdo"><%=frnd.fullName %></button>
+								<!-- <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse<%=index%>" aria-expanded="false" aria-controls="collapseTwo"><%=frnd.fullName %></button> -->
+							</h5>
 						</div>
-						<div id="collapse<%=index%>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+						<!-- <div id="collapse<%=index%>" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 							<div class="card-body">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
 								<%=link_to add_friends_path(user: current_user, friend: frnd) do %><button type="button" class="btn btn-xs btn-success"><i class="fa fa-user-plus"></i> &nbsp;Go to profile</button><% end %>
 							</div>
-						</div>
+						</div> -->
 					</div>
+				</div>
+				<div class="modal fade" id="exampleModal<%=index%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  					<%=render 'friends/partmodel' , obj: frnd%>
 				</div>
 			<% end %>
 		</div>
@@ -37,11 +46,17 @@
 	</div>
 </div>
 <h3>Friend Suggestion</h3>
-<div class="row col-sm-12">
+<div class="row col-lg-12">
 	<% User.all.each do |frnd|%>
 		<%if frnd != current_user%>
-		<div class="well col-md-3 padclass">
-			<b><i class="fa fa-user"></i> <br /><%= frnd.fullName%></b>
+		<div class="well col-md-4 padclass">
+			<b>
+				<% if frnd.has_image? %>
+						<%= image_tag(frnd.images.last.picture.url, size: "40x40") %>
+				<% else %>
+						<%= image_tag("default.jpg", size: "40x40")%>
+				<% end %><%= frnd.fullName%>
+			</b>
 			<br />
 			<% if obj.size > 0 && obj.include?(frnd) %>
 				<button type="button" class="btn btn-xs btn-default disabled"><i class="fa fa-user-plus"></i> &nbsp;Aleard Friends</button>

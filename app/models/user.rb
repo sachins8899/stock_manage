@@ -35,6 +35,14 @@ class User < ApplicationRecord
     !stock_already_added?(ticker_symbol) && stock_limit?
   end
   
+  def has_image?
+    !!images.last
+  end
+  
+  def pending_task
+    friendships.where(status: 'P')
+  end
+  
   def self.search(param)
     param.strip!
     param.downcase!

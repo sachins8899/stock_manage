@@ -1,0 +1,17 @@
+<h1>Add Educations</h1>
+<%= form_for(@education, :html => {:class => "form-horizontal" , role: "form"}) do |f|%> 
+<div id="a1"><%=render 'educations/form' ,f:f %></div>
+<div id="a2"></div>
+<div id='production' style="float: right;">
+	<%=link_to "Add More", "#"%>
+</div>
+<hr />
+<div class="form-group">
+	<div class="control-label col-md-3">
+		<%= f.submit  class: "btn btn-primary clean_form"%>	
+	</div>
+	<div class="control-label col-md-1">
+		<%=link_to "Back", settings_path ,class:"btn btn-default"%>
+	</div>
+</div>
+<% end %>

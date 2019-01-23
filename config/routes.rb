@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post 'add_friends',to: 'users#add_friend'
   get 'my_friends', to: 'users#my_friends'
   resources :profiles, only: [:create,:update,:edit,:new]
+  resources :educations, only:[:create,:update,:edit,:new]
 end

@@ -7,7 +7,13 @@
 	<% @users.each do |frnd|%>
 		<% if frnd != current_user %>
 			<div class="well col-md-3 padclass">
-				<b><i class="fa fa-user"></i> <br /><%= frnd.fullName%></b>
+				<b>
+					<% if frnd.has_image? %>
+							<%= image_tag(frnd.images.last.picture.url, size: "40x40") %>
+					<% else %>
+							<%= image_tag("default.jpg", size: "40x40")%>
+					<% end %><%= frnd.fullName%>
+				</b>
 				<br />
 				<%if current_user.friends.include?(frnd)%>
 					<button type="button" class="btn btn-xs btn-default disabled"><i class="fa fa-user-plus"></i> &nbsp;Aleard Friends</button>
