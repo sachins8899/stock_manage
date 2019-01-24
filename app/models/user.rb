@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
   
   def pending_task
-    friendships.where(status: 'P')
+    friendships.where(status: 'P').ids
   end
   
   def self.search(param)

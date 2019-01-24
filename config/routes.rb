@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :users, only:[:show]
   post 'add_friends',to: 'users#add_friend'
   get 'my_friends', to: 'users#my_friends'
+  post 'accept_request', to: 'users#accept_request'
+  post 'reject_request', to: 'users#reject_request'
   resources :profiles, only: [:create,:update,:edit,:new]
   resources :educations, only:[:create,:update,:edit,:new]
 end

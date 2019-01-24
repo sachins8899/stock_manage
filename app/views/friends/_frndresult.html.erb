@@ -18,7 +18,7 @@
 				<%if current_user.friends.include?(frnd)%>
 					<button type="button" class="btn btn-xs btn-default disabled"><i class="fa fa-user-plus"></i> &nbsp;Aleard Friends</button>
 				<% else %>
-					<%=link_to add_friends_path(user: current_user, friend: frnd) do %><button type="button" class="btn btn-xs btn-success"><i class="fa fa-user-plus"></i> &nbsp;Add As Friend</button><% end %>
+					<%=link_to add_friends_path(user: current_user, friend: frnd), method: :post do %><button type="button" class="btn btn-xs btn-success"><i class="fa fa-user-plus"></i> &nbsp;Add As Friend</button><% end %>
 				<% end %>
 			</div>
 		<% end %>
